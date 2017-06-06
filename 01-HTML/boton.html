@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Animaciones</title>
+    <style>
+
+        .reacciones img {
+            height: 42px;
+            width: 42px;
+            display: none;
+            animation-name: aparecer;
+            animation-duration: 1s;
+        }
+
+        .Like {
+            position: absolute;
+            top: 120px;
+        }
+        .Like:hover + .texto +.reacciones img {
+            display: inline-block;
+        }
+        .reacciones:hover img{
+            display: inline-block;
+        }
+        .texto {
+            display: none;
+        }
+
+        }
+    </style>
+</head>
+<body>
+<h1>
+    Deber boton me gusta
+</h1>
+
+<button class="Like" >Me gusta</button>
+<div class="reacciones">
+    <button id="a" name="boton" type="submit"><img src="http://i.imgur.com/1EfL0K9.png">
+        <p class="texto">Me divierte</p></button>
+    <button id="a" name="boton" type="submit"><img src="http://www.nuntiumcomunicacion.com/wp-content/uploads/2016/11/love.png"></button>
+    <button id="a" name="boton" type="submit"><img src="http://i.imgur.com/EgOrl1E.png"></button>
+    <button id="a" name="boton" type="submit"><img src="http://i.imgur.com/V5SJPrd.jpg"></button>
+    <button id="a" name="boton" type="submit"><img src="https://a.ppy.sh/7624242_1477260564.png"></button>
+
+</div>
+
+</body>
+</html>
