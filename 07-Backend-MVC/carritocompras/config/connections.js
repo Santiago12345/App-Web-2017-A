@@ -21,6 +21,7 @@
 
 module.exports.connections = {
 
+
   /***************************************************************************
   *                                                                          *
   * Local disk storage for DEVELOPMENT ONLY                                  *
@@ -28,6 +29,10 @@ module.exports.connections = {
   * Installed by default.                                                    *
   *                                                                          *
   ***************************************************************************/
+  localDiskDb: {
+    adapter: 'sails-disk'
+  },
+
   dockerMySQL: {
     adapter: 'sails-mysql',
     host: 'localhost',
