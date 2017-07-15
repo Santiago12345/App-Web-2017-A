@@ -32,13 +32,15 @@ module.exports.routes = {
   *                                                                          *
   ***************************************************************************/
 
-  'get /': 'VistaController.homepage',
+  'get /homepage': 'VistaController.homepage',
   '/perfil':{
     view:'UsuarioGestion/perfil'
   },
 
   'get /ContenidoOculto':
     'VistaController.vistaOculta',
+  'get /crearusuario':
+    'VistaController.crearusuario',
 
 
   /***************************************************************************

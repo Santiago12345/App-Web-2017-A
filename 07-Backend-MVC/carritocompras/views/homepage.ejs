@@ -1,7 +1,13 @@
 <h1>Homepage</h1>
-<% var numero = 5 %>
-<%= usuario.id = usuario.id - 5 %>
-<%= usuario.nombres %>
-<%= usuario.apellidos %>
-<%= usuario.id %>
-<input type="text" value="<%= usuario.nombres%>">
+<div class="row">
+  <% for(var i=0; i<usuarios.length; i++) {%>
+  <div class="card" style="width: 20rem;">
+    <img class="card-img-top" src="..." alt="Card image cap">
+    <div class="card-block">
+      <h4 class="card-title"><%=usuarios[i].nombres%></h4>
+      <p class="card-text">El apellido de esta persona es el siguiente: <%=usuarios[i].apellidos%></p>
+      <a href="#" class="btn btn-primary">Go somewhere</a>
+    </div>
+  </div>
+  <% } %>
+</div>

@@ -5,14 +5,17 @@ module.exports = {
   vistaOculta: function (req, res) {
     return res.view('Oculto/sorpresa');
   },
-  homepage:(req,res) => {
-    let usuarioModelo = {
-      nombres: "Santaigo",
-      apellidos: "Pazmino",
-      id: "7"
+homepage: function(req, res) {
+  sails.models.usuario.find().exec(function (err, usuariosEncontrados) {
+    if (err) {
+      return res.serverError(err);
     }
-    return res.view('homepage',{
-      usuario:usuarioModelo
-    })
+    else {
+      return res.view('homepage', {usuarios: usuariosEncontrados});
+    }
+  });
+},
+    crearUsuario: function(req, res){
+    return res.view('crearusuario')
   }
 };

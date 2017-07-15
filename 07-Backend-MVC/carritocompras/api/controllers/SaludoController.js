@@ -1,6 +1,6 @@
 /**
-* Created by USRDEL on 19/6/17.
-*/
+ * Created by USRDEL on 19/6/17.
+ */
 // /Saludo/crearUsuarioQuemado
 module.exports = {
   welcome: function (req, res) {
@@ -17,7 +17,10 @@ module.exports = {
     return res.send("Hola");
   },
   crearUsuarioQuemado: function (req, res) {
+    // http://localhost:1337/Saludo/crearUsuarioQuemado
+    // /Saludo/crearUsuarioQuemado ->RELATIVE PATH
     var parametros = req.allParams();
+    sails.log.info("Parametros", parametros);
     //  Ejemplo para crear por parametros query
     // http://localhost:1337/Saludo/crearUsuarioQuemado?nombres=Vicente&fechaNacimiento=2016-01-02
     var nuevoUsuario = {
@@ -44,7 +47,8 @@ module.exports = {
           return res.serverError(error);
         }
         else {
-          return res.ok(usuarioCreado);
+         // return res.ok(usuarioCreado);
+          return res.redirect('/homepage')
         }
       });
   }
