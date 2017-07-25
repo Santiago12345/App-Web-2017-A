@@ -48,7 +48,7 @@ module.exports = {
         }
         else {
          // return res.ok(usuarioCreado);
-          return res.redirect('/homepage')
+          return res.redirect('/')
         }
       });
   }
