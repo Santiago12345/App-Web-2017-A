@@ -7,12 +7,13 @@
 
 module.exports = {
   attributes: {
-    nombreCasual: {
+    nombre: {
       type: 'string',
       required: true
     },
     fkIdUniversidad:{
-      model:'Universidad'
+      model:'Universidad',
+      required:true
     }
   }
 };
