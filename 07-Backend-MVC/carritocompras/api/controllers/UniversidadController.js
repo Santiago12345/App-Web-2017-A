@@ -23,7 +23,6 @@ module.exports = {
     enum: ['Abierto', 'Cerrado','Clausurado'],
     defaultsTo:'Cerrado'
   },
-
   facultades:{
 	  collection:'Facultad', //Tabla con la que nos relacionamos
     via:'fkIdUniversidad'
