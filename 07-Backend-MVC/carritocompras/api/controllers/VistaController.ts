@@ -37,18 +37,65 @@ module.exports = {
       })
       .exec((err,usuarios)=>{
         if(err) return res.negotiate(err);
-        sails.log.info("Usuarios",usuarios);
 
-        return res.view('homepage',{
-          usuarios:usuarios
-        })
+        let cookies = req.cookies;
+
+        console.log(cookies.arregloUsuarios);
+
+        if(cookies.arregloUsuarios){
+          let arregloUsuarios = cookies.arregloUsuarios.idsCliente;
+          console.log(arregloUsuarios);
+
+          return res.view('homepage',{
+            usuarios:usuarios,
+            arregloUsuarios:arregloUsuarios
+          })
+
+        }else{
+
+          return res.view('homepage',{
+            usuarios:usuarios
+          })
+
+        }
+
       })
   },
   crearUsuario:(req,res)=>{
     return res.view('crearusuario')
+  },
+  editarUsuario:(req,res)=>{
+
+    let parametros = req.allParams();
+    if(parametros.id){
+
+      Usuario.findOne({
+        id:parametros.id
+      })
+        .exec((err,usuarioEncontrado)=>{
+          if(err) return res.serverError(err);
+
+          if(usuarioEncontrado){
+            //Si encontro
+
+            return res.view('editarusuario',{
+              usuario:usuarioEncontrado
+            })
+
+          }else{
+            //No encontro
+            return res.redirect('/crearUsuario')
+          }
+        });
+
+    }else{
+      return res.redirect('/crearUsuario')
+    }
+
+
+
+
   }
 
 };
-
-
 

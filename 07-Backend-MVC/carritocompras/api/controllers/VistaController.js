@@ -29,35 +29,49 @@ module.exports = {
       .exec(function (err, usuarios) {
         if (err)
           return res.negotiate(err);
-        sails.log.info("Usuarios", usuarios);
-        return res.view('homepage', {
-          usuarios: usuarios
-        });
+        var cookies = req.cookies;
+        console.log(cookies.arregloUsuarios);
+        if (cookies.arregloUsuarios) {
+          var arregloUsuarios = cookies.arregloUsuarios.idsCliente;
+          console.log(arregloUsuarios);
+          return res.view('homepage', {
+            usuarios: usuarios,
+            arregloUsuarios: arregloUsuarios
+          });
+        }
+        else {
+          return res.view('homepage', {
+            usuarios: usuarios
+          });
+        }
       });
   },
   crearUsuario: function (req, res) {
     return res.view('crearusuario');
   },
   editarUsuario: function (req, res) {
-
-    let parametros = req.allParams();
+    var parametros = req.allParams();
     if (parametros.id) {
       Usuario.findOne({
-        id:parametros.id
+        id: parametros.id
       })
-      .exec((err, usuarioEncontrado)=>{
-        if(err) return res.serverError(err);
-        if (usuarioEncontrado){
-          return res.view('editarusuario',{
-            usuario:usuarioEncontrado
-          })
-        }else{
-          return res.redirect('/crearusuario')
-        }
-      });
-      //return res.view('editarusuario')
-    } else {
-      return res.redirect('/crearusuario');
+        .exec(function (err, usuarioEncontrado) {
+          if (err)
+            return res.serverError(err);
+          if (usuarioEncontrado) {
+            //Si encontro
+            return res.view('editarusuario', {
+              usuario: usuarioEncontrado
+            });
+          }
+          else {
+            //No encontro
+            return res.redirect('/crearUsuario');
+          }
+        });
+    }
+    else {
+      return res.redirect('/crearUsuario');
     }
   }
 };
